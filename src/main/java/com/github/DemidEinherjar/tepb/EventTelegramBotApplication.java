@@ -9,5 +9,4 @@ public class EventTelegramBotApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(EventTelegramBotApplication.class, args);
 	}
-
 }
