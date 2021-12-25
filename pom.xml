@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.github.DemidEinherjar</groupId>
 	<artifactId>telegram-event-planner-bot</artifactId>
-	<version>0.2.0-SNAPSHOT</version>
+	<version>0.3.0-SNAPSHOT</version>
 	<name>EventTelegramBot</name>
 	<description> Telegram bot for subscribing to upcoming meetings and events</description>
 	<properties>
