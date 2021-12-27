@@ -3,6 +3,7 @@ package com.github.DemidEinherjar.tepb.command;
 import com.github.DemidEinherjar.tepb.bot.EventPlannerTelegramBot;
 import com.github.DemidEinherjar.tepb.service.SendBotMessageService;
 import com.github.DemidEinherjar.tepb.service.SendBotMessageServiceImpl;
+import com.github.DemidEinherjar.tepb.service.TelegramUserService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -14,6 +15,7 @@ abstract class AbstractCommandTest {
 
     protected EventPlannerTelegramBot eventPlannerTelegramBot = Mockito.mock(EventPlannerTelegramBot.class);
     protected SendBotMessageService sendBotMessageService = new SendBotMessageServiceImpl(eventPlannerTelegramBot);
+    protected TelegramUserService telegramUserService = Mockito.mock(TelegramUserService.class);
 
     abstract String getCommandName();
 

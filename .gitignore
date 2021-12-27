@@ -3,7 +3,6 @@ target/
 out/
 .mvn/
 .idea/
-/src/main/resources/application.properties
 *.iws
 *.iml
 *.ipr

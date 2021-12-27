@@ -2,6 +2,8 @@ package com.github.DemidEinherjar.tepb.bot;
 
 import com.github.DemidEinherjar.tepb.command.CommandContainer;
 import com.github.DemidEinherjar.tepb.service.SendBotMessageServiceImpl;
+import com.github.DemidEinherjar.tepb.service.TelegramUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -23,8 +25,9 @@ public class EventPlannerTelegramBot extends TelegramLongPollingBot {
 
     private final CommandContainer commandContainer;
 
-    public EventPlannerTelegramBot() {
-        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this));
+    @Autowired
+    public EventPlannerTelegramBot(TelegramUserService telegramUserService) {
+        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this), telegramUserService);
     }
 
     @Override
