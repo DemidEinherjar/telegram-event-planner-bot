@@ -1,6 +1,7 @@
 package com.github.DemidEinherjar.tepb.command;
 
 import com.github.DemidEinherjar.tepb.service.SendBotMessageService;
+import com.github.DemidEinherjar.tepb.service.TelegramUserService;
 import org.junit.jupiter.api.*;
 import org.mockito.Mockito;
 
@@ -14,7 +15,8 @@ class CommandContainerTest {
     @BeforeEach
     public void init() {
         SendBotMessageService sendBotMessageService = Mockito.mock(SendBotMessageService.class);
-        commandContainer = new CommandContainer(sendBotMessageService);
+        TelegramUserService telegramUserService = Mockito.mock(TelegramUserService.class);
+        commandContainer = new CommandContainer(sendBotMessageService, telegramUserService);
     }
 
     @Test
