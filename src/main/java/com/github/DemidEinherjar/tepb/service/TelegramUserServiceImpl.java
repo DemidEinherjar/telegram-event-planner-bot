@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-// Implementation of {@link TelegramUserService}.
+/**
+ * Implementation of {@link TelegramUserService}.
+ */
 @Service
 public class TelegramUserServiceImpl implements TelegramUserService {
     private final TelegramUserRepository telegramUserRepository;

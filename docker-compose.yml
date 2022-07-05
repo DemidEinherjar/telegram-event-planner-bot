@@ -1,26 +1,14 @@
-version: '3.1'
+version: '3.9'
 
 services:
-  tepb-bot:
-    depends_on:
-      - tepb-db
-    build:
-      context: .
+  telegram-event-planner-bot:
     environment:
-      BOT_NAME: ${BOT_NAME}
-      BOT_TOKEN: ${BOT_TOKEN}
-      BOT_DB_USERNAME: ${BOT_DB_USERNAME}
-      BOT_DB_PASSWORD: ${BOT_DB_PASSWORD}
-    restart: always
-  tepb-db:
-    image: mysql
-    restart: always
-    environment:
-      MYSQL_USER: ${BOT_DB_USERNAME}
-      MYSQL_PASSWORD: ${BOT_DB_PASSWORD}
-      MYSQL_DATABASE: 'tepb_db'
-      MYSQL_ROOT_PASSWORD: 'tepb_db_root_password'
-    ports:
-      - '3306:3306'
-    expose:
-      - '3306'
+      SPRING_DATASOURCE_URL: jdbc:postgresql://host.docker.internal:5432/tepb?ApplicationName=telegram-event-planner-bot
+      SPRING_DATASOURCE_USERNAME: ${BOT_DB_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${BOT_DB_PASSWORD}
+      SPRING_BOT_NAME: ${BOT_NAME}
+      SPRING_BOT_TOKEN: ${BOT_TOKEN}
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure

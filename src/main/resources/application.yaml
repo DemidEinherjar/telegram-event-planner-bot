@@ -1,0 +1,62 @@
+# Server config
+server:
+  port: 8080
+  servlet:
+    context-path: /telegram-event-planner-bot
+
+# Spring config
+spring:
+  profiles:
+    active: development
+    default: development
+  application:
+    name: telegram-event-planner-bot
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    out-of-order: true
+    locations: classpath:/db/migration
+    baseline-version: 0
+    table: tr_tepb_schema_history
+    schemas:
+      - tepb
+
+# SpringDoc config
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+
+# Development profile config
+---
+spring:
+  config:
+    activate:
+      on-profile: development
+  datasource:
+    username: ${BOT_DB_USERNAME}
+    password: ${BOT_DB_PASSWORD}
+    url: jdbc:postgresql://localhost:5432/tepb?ApplicationName=telegram-event-planner-bot
+  bot:
+    name: ${BOT_NAME}
+    token: ${BOT_TOKEN}
+  jpa:
+    show-sql: true
+
+news-service:
+  notifications:
+    polling-time-millis: 5000
+
+# Test profile config
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+# Production profile config
+---
+spring:
+  config:
+    activate:
+      on-profile: production

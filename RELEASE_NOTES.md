@@ -1,5 +1,8 @@
 # Release Notes
 
+## 0.4.1-SNAPSHOT
+* refactoring project
+
 ## 0.4.0-SNAPSHOT
 * added repository layer
 
